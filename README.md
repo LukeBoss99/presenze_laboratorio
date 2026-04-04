@@ -1,23 +1,39 @@
-# Nome del Progetto
+# 🚪 Sistema Presenze RFID (Arduino R4 WiFi + Google Sheets)
 
-Una breve descrizione di una riga che spiega cosa fa questo progetto o qual è il suo scopo principale.
+Un sistema IoT semplice ed efficace per la gestione degli accessi e delle presenze. Il progetto utilizza un **Arduino Mega con ESP8266** per leggere i tag RFID e invia i dati in tempo reale a un **Foglio Google**, che funge da database cloud gratuito.
 
-## 📂 Struttura del Repository
+## ✨ Funzionalità
+- **Riconoscimento Automatico:** Associa l'ID del tag a Nome e Cognome salvati in anagrafica.
+- **Registro Cloud:** Salva data, ora e generalità nel foglio "Presenze".
+- **Gestione Manuale:** Pulsanti integrati nel foglio Google per:
+  - Registrare nuovi utenti nell'anagrafica.
+  - Segnare presenze manuali (per chi dimentica il badge).
+- **Connessione Sicura:** Gestione delle richieste HTTPS verso Google Script.
 
-In questa sezione viene descritto il contenuto e la funzione di ogni file presente nel repository per facilitarne la comprensione a collaboratori e utenti.
+## 🛠️ Hardware Necessario
+- **Arduino UNO R4 WiFi**
+- **Modulo RFID-RC522**
+- **Tag/Card RFID** (13.56 MHz)
+- Cavi Jumper (Maschio-Maschio o Maschio-Femmina)
 
-| File / Cartella | Descrizione |
-| :--- | :--- |
-| `arduino_presenze` | Cartella che contiene il progetto. |
-| `arduino_presenze.ino` | File da caricare su Arduino |
-| `wifiWrapper.h`,`wifiWrapper_WiFi.cpp` | Libreria per utilizzare un esp8266 con un Arduino Mega |
+## 🚀 Configurazione
+
+### 1. Google Sheets & Apps Script
+1. Crea un nuovo Foglio Google.
+2. Crea due schede nominate esattamente: `Anagrafica` e `Presenze`.
+3. Vai su **Estensioni > Apps Script** e inserisci il codice fornito per gestire le richieste `doGet` e le funzioni manuali.
+4. Clicca su **Distribuisci > Nuova distribuzione**.
+   - Tipo: Applicazione Web
+   - Esegui come: Me
+   - Chi ha accesso: **Chiunque**
+5. Copia l'**URL dell'applicazione web** generato.
+
+### 2. Arduino IDE
+1. Installa le librerie: `MFRC522`
+2. Apri lo sketch `.ino` fornito.
+3. Inserisci il tuo `SSID` e `PASSWORD` del Wi-Fi.
+4. Incolla l'ID del tuo script Google nella variabile `scriptPath`.
+5. Carica il codice sulla scheda.
 
 ---
-
-## 🛠️ Descrizione Dettagliata dei File
-
-### 🔹 Logica Principale
-* Il codice che viene caricato sull'Arduino legge il tag RFID
-* Il codice del tag, tramite ESP8266 che lancia un'API di google script, viene salvato su una tabella excel
-
----
+*Sviluppato con ❤️ per semplificare la gestione degli accessi.*
