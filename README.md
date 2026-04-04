@@ -1,4 +1,4 @@
-# 🚪 Sistema Presenze RFID (Arduino R4 WiFi + Google Sheets)
+# 🚪 Sistema Presenze RFID (Arduino Mega con ESP8266 + Google Sheets)
 
 Un sistema IoT semplice ed efficace per la gestione degli accessi e delle presenze. Il progetto utilizza un **Arduino Mega con ESP8266** per leggere i tag RFID e invia i dati in tempo reale a un **Foglio Google**, che funge da database cloud gratuito.
 
